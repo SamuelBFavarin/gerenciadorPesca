@@ -106,11 +106,14 @@
 
         
         <script>
+            
+            var cont = 0;
             function addLance(){
                 // Adiciona arquivo lance.php 
-                $.get("./lance.php", function (lance){
+                $.get("./lance.php", {"id":cont}, function (lance){
                     $( "#lance" ).append(lance);
                 });
+                cont++;
             }
         </script>
         
