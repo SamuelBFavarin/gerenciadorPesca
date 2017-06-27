@@ -90,7 +90,7 @@
             </div>
             <div class="container">
                 <ul class="nav nav-tabs" id="lances_adicionados" style="cursor:pointer;">
-                    <li> <a  style="color: white; background-color: green;" id="addLance"onclick="addLance()"> + Adicionar Lance </a></li>
+                    <li> <a data-toggle="tab" style="color: white; background-color: green;" id="addLance"onclick="addLance()"> + Adicionar Lance </a></li>
                     <li class="active"><a data-toggle="tab" href="#lance1">Lance 1</a></li>
                 </ul>
                 <div class="tab-content" id="pagLances"> </div>
@@ -105,6 +105,7 @@
                     $("#lances_adicionados").append("<li><a data-toggle='tab' href='#lance"+cont+"'> Lance "+ cont +"</a></li>");
                     $("#pagLances").append("<div id='lance"+cont+"' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
                     $( "#lance"+cont ).append(lance);
+                    $( "#lance"+cont ).append("<div><center><button  id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+$(this).attr("id")+")'>+ Captura</button></center></div>");
                 });
                 cont++;
             }
@@ -113,8 +114,18 @@
                 $.get("./lance.php", {"id":cont}, function (lance){
                     $("#pagLances").append("<div id='lance1' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
                     $( "#lance"+cont ).append(lance);
+                    $( "#lance"+cont ).append("<div><center><button  id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura()'>+ Captura</button></center></div>");
                 });
                 cont++;
+            }
+
+            function addCaptura(){
+                //Adiciona arquivo captura.php
+                alert(this.id);
+                $.get("./captura.php", function (lance){
+                    $( "#captura" ).append(lance);
+
+                });
             }
         </script>
         
