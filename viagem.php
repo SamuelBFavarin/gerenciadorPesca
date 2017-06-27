@@ -2,16 +2,12 @@
     <head>
         <title>Gerenciador Pesca</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <link rel="stylesheet" type="text/css" href="css/style.css">
         
     </head>
@@ -92,26 +88,31 @@
                     </div>
                 </div>
             </div>
-            <h3>Lances</h3>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div id="lance">
-                    </div>    
-                    <center>
-                        <button class="btn btn-success mainButton" onclick="addLance()">+ Add Lance</button>
-                    </center>
-                </div>
+            <div class="container">
+                <ul class="nav nav-tabs" id="lances_adicionados" style="cursor:pointer;">
+                    <li> <a  style="color: white; background-color: green;" id="addLance"onclick="addLance()"> + Adicionar Lance </a></li>
+                    <li class="active"><a data-toggle="tab" href="#lance1">Lance 1</a></li>
+                </ul>
+                <div class="tab-content" id="pagLances"> </div>
             </div>
-        </div>
 
-        
         <script>
-            
             var cont = 0;
+
             function addLance(){
-                // Adiciona arquivo lance.php 
+                // Adiciona arquivo lance.php
                 $.get("./lance.php", {"id":cont}, function (lance){
-                    $( "#lance" ).append(lance);
+                    $("#lances_adicionados").append("<li><a data-toggle='tab' href='#lance"+cont+"'> Lance "+ cont +"</a></li>");
+                    $("#pagLances").append("<div id='lance"+cont+"' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
+                    $( "#lance"+cont ).append(lance);
+                });
+                cont++;
+            }
+            window.onload = function addLanceOnLoad(){
+                // Adiciona arquivo lance.php on load
+                $.get("./lance.php", {"id":cont}, function (lance){
+                    $("#pagLances").append("<div id='lance1' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
+                    $( "#lance"+cont ).append(lance);
                 });
                 cont++;
             }

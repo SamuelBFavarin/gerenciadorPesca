@@ -5,7 +5,6 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <h3>Lance</h3>
             <div class="form-group">
               <label for="horaInicio">Defina a hora inicial:</label>
               <input type="time" class="form-control" id="horaInicio">
