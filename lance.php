@@ -34,10 +34,10 @@
               <input type="text" class="form-control" id="lon">
             </div>
 
-            <div id="captura<?php echo $id; ?>" class="col-md-12">
-            </div>
+            
         </div>
 
     </div>
+
 
 

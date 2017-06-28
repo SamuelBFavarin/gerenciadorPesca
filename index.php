@@ -14,9 +14,9 @@
         
     </head>
     <body>
-        <!--------------
+        <!--=========
             Main Menu
-        --------------->
+        ================-->
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -47,9 +47,9 @@
           </div>
         </nav>
         
-        <!---------------
+        <!--===============
             Content Home
-        ----------------->
+        ===================-->
         <div class="container">
             <div class="col-md-4 mainButton">
                 <h3>Nova viagem</h3>

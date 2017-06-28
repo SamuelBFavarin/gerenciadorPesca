@@ -12,9 +12,9 @@
         
     </head>
     <body>
-        <!--------------
+        <!--================
             Main Menu
-        --------------->
+        ===================-->
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -44,9 +44,9 @@
             </ul>
           </div>
         </nav>
-        <!--------------------
+        <!--===================
             Formulário Viagem
-        --------------------->
+        =====================-->
         <div class="container">
             <h3>Nova Viagem</h3>
             <div class="panel panel-default">
@@ -105,7 +105,8 @@
                     $("#lances_adicionados").append("<li><a data-toggle='tab' href='#lance"+cont+"'> Lance "+ cont +"</a></li>");
                     $("#pagLances").append("<div id='lance"+cont+"' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
                     $( "#lance"+cont ).append(lance);
-                    $( "#lance"+cont ).append("<div><center><button  id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+$(this).attr("id")+")'>+ Captura</button></center></div>");
+                    $( "#lance"+cont ).append("<div id='captura"+cont+"' class='col-md-12'></div>");
+                    $( "#lance"+cont ).append("<div><center><button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ $('button.btn').attr('id')+");'>+ Captura</button></center></div>");
                 });
                 cont++;
             }
@@ -114,19 +115,22 @@
                 $.get("./lance.php", {"id":cont}, function (lance){
                     $("#pagLances").append("<div id='lance1' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
                     $( "#lance"+cont ).append(lance);
-                    $( "#lance"+cont ).append("<div><center><button  id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura()'>+ Captura</button></center></div>");
+                    $( "#lance"+cont ).append("<div id='captura"+cont+"' class='col-md-12'></div>");
+                    $( "#lance"+cont ).append("<div><center><button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ $('button.btn').attr('id')+");'>+ Captura</button></center></div>");
                 });
                 cont++;
             }
 
-            function addCaptura(){
-                //Adiciona arquivo captura.php
-                alert(this.id);
-                $.get("./captura.php", function (lance){
-                    $( "#captura" ).append(lance);
 
-                });
+            function addCaptura(val){
+                //Adiciona arquivo captura.php   
+                alert(val);
+                $.get("./captura.php", function (lance){
+                   $("#captura"+val).append(lance);
+                });  
             }
+        
+
         </script>
         
     </body>  
