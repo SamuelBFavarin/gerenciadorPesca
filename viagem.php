@@ -18,18 +18,18 @@
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">Gerador Pesca</a>
+              <a class="navbar-brand" href="index.php">Gerador Pesca</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li class="active"><a href="#">Nova viagem</a></li>  
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerenciar
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Embarcações</a></li>
+                      <li><a href="embarcacao.php">Embarcações</a></li>
                       <li><a href="#">Espécies</a></li>
-                      <li><a href="#">Porto</a></li>
+                      <li><a href="porto.php">Porto</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

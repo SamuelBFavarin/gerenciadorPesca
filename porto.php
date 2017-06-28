@@ -24,13 +24,13 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">Gerenciar
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="">Embarcações</a></li>
+                      <li><a href="embarcacao.php">Embarcações</a></li>
                       <li><a href="#">Espécies</a></li>
-                      <li><a href="porto.php">Porto</a></li>
+                      <li><a href="">Porto</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" >Relatórios
+                    <a class="dropdown-toggle" data-toggle="dropdown">Relatórios
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Resumo de atividade mensal</a></li>
@@ -46,15 +46,16 @@
             Content Home
         ===================-->
         <div class="container">
-            <h3 class="col-md-6">Embarações:</h3>
+            <h3 class="col-md-6">Portos:</h3>
             
-            <button class="btn btn-success col-md-6" type="button" data-toggle="modal" data-target="#vagaModal" style="max-width: 200px; float: right;"> Adicionar Embarcação</button> 
+            <button class="btn btn-success col-md-6" type="button" data-toggle="modal" data-target="#portoModal" style="max-width: 200px; float: right;"> Adicionar Porto</button> 
             
             <div class="panel panel-default" style="margin-top: 60px;">
                <div class="panel-body">
                     <div class="col-md-6">
-                       <h5>Nome: Pérola Negra</h5>
-                       <h5>Tamanho: 50</h5>
+                       <h5>Nome: Porto Itajaí</h5>
+                       <h5>Administracao: Pública</h5>
+                       <h5>Ano fundação: 1989</h5>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-danger" style="float: right; margin-top: 20px;"> Excluir</button>
@@ -66,13 +67,13 @@
         <!--===============
             MODAL 
         =================-->  
-        <div class="modal fade" id="vagaModal" role="dialog">
+        <div class="modal fade" id="portoModal" role="dialog">
           <div class="modal-dialog">
 
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Cadastrar Embarcação</h4>
+                <h4 class="modal-title">Cadastrar Porto</h4>
               </div>
               <form>
                 <div class="modal-body"> 
@@ -81,7 +82,14 @@
                     <input type="text" class="form-control" id="nome">
                   </div> 
                   <div class="form-group">
-                    <label for="tam">Tamanho:</label>
+                      <label for="embarcacao">Escolha o tipo de Administração</label>
+                      <select class="form-control" id="embarcacao">
+                        <option>Pública</option>
+                        <option>Privada</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="tam">Ano de fundação:</label>
                     <input type="number" class="form-control" id="tam">
                   </div>
                 </div>
