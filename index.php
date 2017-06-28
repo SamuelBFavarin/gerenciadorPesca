@@ -28,7 +28,7 @@
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="embarcacao.php">Embarcações</a></li>
-                      <li><a href="#">Espécies</a></li>
+                      <li><a href="especie.php">Espécies</a></li>
                       <li><a href="porto.php">Porto</a></li>
                     </ul>
                 </li>
