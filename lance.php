@@ -32,11 +32,8 @@
             <div class="form-group col-md-4">
               <label for="lon">Longitude:</label>
               <input type="text" class="form-control" id="lon">
-            </div>
-
-            
+            </div>  
         </div>
-
     </div>
 
 

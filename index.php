@@ -24,12 +24,12 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Nova viagem</a></li>  
+                <li><a href="viagem.php">Nova viagem</a></li>  
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Gerenciar
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Embarcações</a></li>
+                      <li><a href="embarcacao.php">Embarcações</a></li>
                       <li><a href="#">Espécies</a></li>
                       <li><a href="#">Porto</a></li>
                     </ul>
@@ -53,11 +53,11 @@
         <div class="container">
             <div class="col-md-4 mainButton">
                 <h3>Nova viagem</h3>
-                <button class="btn btn-success"> Nova Viagem</button>
+                <a href="viagem.php" ><button class="btn btn-success"> Nova Viagem</button></a>
             </div>
             <div class="col-md-4 mainButton">
                 <h3>Gerenciar</h3>
-                <button class="btn btn-primary"> Embarcação</button><br>
+                <a href="embarcacao.php"><button class="btn btn-primary"> Embarcação</button></a><br>
                 <button class="btn btn-primary"> Espécies</button><br>
                 <button class="btn btn-primary"> Porto</button>
             </div>
