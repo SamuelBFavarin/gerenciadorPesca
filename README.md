@@ -19,7 +19,7 @@ Foi utilizado a ferramenta Vertabelo para desenvolver o modelo lágico do banco 
 # Modelo Lógico Banco de Dados
 ![alt text](https://github.com/SamuelBFavarin/gerenciadorPesca/blob/master/db_files/projeto_logico.png)
 
-# Links refencia
+# Links referência
 
  + PHP com PostgreSQL: https://secure.php.net/manual/pt_BR/book.pgsql.php#book.pgsql
  + Vertabelo: https://www.vertabelo.com/
