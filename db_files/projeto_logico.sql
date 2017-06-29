@@ -1,6 +1,6 @@
 -- Table: captura_especie
 CREATE TABLE captura_especie (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     peso real  NOT NULL,
     especie_id int  NOT NULL,
     lance_id int  NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE captura_especie (
 
 -- Table: embarcacao
 CREATE TABLE embarcacao (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     nome varchar(255)  NOT NULL,
     tamanho real  NOT NULL,
     CONSTRAINT embarcacao_pk PRIMARY KEY (id)
@@ -17,7 +17,7 @@ CREATE TABLE embarcacao (
 
 -- Table: especie
 CREATE TABLE especie (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     nome varchar(255)  NOT NULL,
     profundidade_max real  NOT NULL,
     profundidade_min real  NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE especie (
 
 -- Table: fotografia
 CREATE TABLE fotografia (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     especie_id int  NOT NULL,
     dir text  NOT NULL,
     CONSTRAINT fotografia_pk PRIMARY KEY (id)
@@ -34,7 +34,7 @@ CREATE TABLE fotografia (
 
 -- Table: lance
 CREATE TABLE lance (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     hora_inicio timestamp  NOT NULL,
     hora_fim timestamp  NOT NULL,
     comprimento_rede real  NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE lance (
 
 -- Table: porto
 CREATE TABLE porto (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     nome varchar(255)  NOT NULL,
     administracao char(2)  NOT NULL,
     ano smallint  NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE porto (
 
 -- Table: viagem
 CREATE TABLE viagem (
-    id int  NOT NULL,
+    id serial  NOT NULL,
     embarcacao_id int  NOT NULL,
     porto_inicio_id int  NOT NULL,
     porto_fim_id int  NOT NULL,

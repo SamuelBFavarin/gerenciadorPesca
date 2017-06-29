@@ -93,7 +93,8 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Cadastrar Embarcação</h4>
               </div>
-              <form>
+              
+              <form action="/action_page.php" method="post">
                 <div class="modal-body"> 
                   <div class="form-group">
                     <label for="nome">Nome:</label>
@@ -116,6 +117,7 @@
                   <button class="btn btn-success"> Cadastrar </button>
                 </div>
               </form>
+              
             </div>  
           </div>
         </div> 
