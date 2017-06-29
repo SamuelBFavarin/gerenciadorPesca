@@ -41,6 +41,9 @@
                       <li><a href="#">Resumo de atividade por espécie</a></li>
                     </ul>
                 </li>
+                <li style="float: right;">
+                   <button class="btn btn-success" > Finalizar Cadastro</button>
+                </li> 
             </ul>
           </div>
         </nav>
@@ -96,41 +99,109 @@
                 <div class="tab-content" id="pagLances"> </div>
             </div>
 
+
         <script>
             var cont = 0;
 
             function addLance(){
-                // Adiciona arquivo lance.php
-                $.get("./lance.php", {"id":cont}, function (lance){
-                    $("#lances_adicionados").append("<li><a data-toggle='tab' href='#lance"+cont+"'> Lance "+ cont +"</a></li>");
-                    $("#pagLances").append("<div id='lance"+cont+"' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
-                    $( "#lance"+cont ).append(lance);
-                    $( "#lance"+cont ).append("<div id='captura"+cont+"' class='col-md-12'></div>");
-                    $( "#lance"+cont ).append("<div><center><button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ $('button.btn').attr('id')+");'>+ Captura</button></center></div>");
+                // FUNÇÃO PARA ADICIONAR NOVOS LANCES 
+
+                //RECEBE POR GET O ARQUIVO lance.php 
+                $.get("./lance.php", function (lancePHP){
+
+                    //ADICIONA ABA DA LISTA
+                    $("#lances_adicionados").append(
+                        "<li>"+
+                            "<a data-toggle='tab' href='#lance"+cont+"'>Lance "+ cont +"</a>"+
+                        "</li>"
+                    );
+
+                    //DESATIVA AS LANCES ANTERIORES
+                    $("#pagLances > div.active").removeClass("active");
+
+                    //CRIA O TÍTULO DA LISTA
+                    $("#pagLances").append(
+                        "<div id='lance"+cont+"' class='tab-pane fade active in '>"+
+                            "<h3> Lance "+ cont +"</h3> "+
+                        "</div>"
+                    );
+
+                    //CRIA VARIÁVEL COM O ID DO LANCE ATUAL
+                    var lance = $( "#lance"+cont );
+
+                    //ADICIONA O HTML DO ARQUIVO lance.php PARA DENTRO DA LISTA
+                    lance.append(lancePHP);
+
+                    //CRIA UMA DIVISÃO PARA INSERIR AS CAPTURAS
+                    lance.append(
+                        "<div id=\"captura"+cont+"\" class=\"col-md-12\"></div>"
+                    );
+
+                    //CRIA O BOTÃO PARA INSERIR AS CAPTURAS USANDO A FUNÇÃO add Captura
+                    lance.append(
+                        "<div>"+
+                         "<center>"+
+                            "<button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ cont+ ");'>"+
+                                "+ Captura"+
+                            "</button>"+
+                         "</center>"+
+                        "</div>"
+                    );
                 });
                 cont++;
             }
+
+
             window.onload = function addLanceOnLoad(){
-                // Adiciona arquivo lance.php on load
-                $.get("./lance.php", {"id":cont}, function (lance){
-                    $("#pagLances").append("<div id='lance1' class='tab-pane fade active in '> <h3> Lance "+ cont +"</h3> </div>");
-                    $( "#lance"+cont ).append(lance);
-                    $( "#lance"+cont ).append("<div id='captura"+cont+"' class='col-md-12'></div>");
-                    $( "#lance"+cont ).append("<div><center><button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ $('button.btn').attr('id')+");'>+ Captura</button></center></div>");
+                // FUNÇÃO ADD LANCE 1 AO CARREGAR A PÁGINA
+
+                //RECEBE POR GET O ARQUIVO lance.php
+                $.get("./lance.php",  function (lancePHP){
+
+                    //CRIA TÍTULO PARA O LANCE 1
+                    $("#pagLances").append(
+                        "<div id='lance1' class='tab-pane fade active in '>"+
+                            "<h3> Lance "+ cont +"</h3>"+
+                        "</div>"
+                    );
+
+                    //CRIA VARIÁVEL COM O ID DO LANCE1
+                    var lance = $( "#lance"+cont );
+
+                    //ADICIONA O HTML DO ARQUIVO lance.php PARA DENTRO DA LISTA1
+                    lance.append(lancePHP);
+                    
+                    //CRIA UMA DIVISÃO PARA INSERIR AS CAPTURAS
+                    lance.append(
+                        "<div id='captura"+cont+"' class='col-md-12'></div>"
+                    );
+
+                    //CRIA O BOTÃO PARA INSERIR AS CAPTURAS COM A FUNÇÃO addCaptura
+                    lance.append(
+                        "<div>"+
+                            "<center>"+
+                                "<button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ cont+ ");'>"+
+                                    "+ Captura"+
+                                "</button>"+
+                            "</center>"+
+                        "</div>"
+                    );
                 });
                 cont++;
             }
 
-
+            
             function addCaptura(val){
-                //Adiciona arquivo captura.php   
-                alert(val);
+                //FUNÇÃO QUE ADICIONA CAPTURA NO LANCE ESPECÍFICO
+                //RECEBE O ID DO LANCE
+
+                //RECEBE POR GET O ARQUIVO captura.php
                 $.get("./captura.php", function (lance){
+
+                    //ADD CAPTURA NA DIVISÃO DEFINIDA POR LANCE
                    $("#captura"+val).append(lance);
                 });  
             }
-        
-
         </script>
         
     </body>  
