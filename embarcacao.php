@@ -50,17 +50,9 @@
             
             <button class="btn btn-success col-md-6" type="button" data-toggle="modal" data-target="#vagaModal" style="max-width: 200px; float: right;"> Adicionar Embarcação</button> 
             
-            <div class="panel panel-default" style="margin-top: 60px;">
-               <div class="panel-body">
-                    <div class="col-md-6">
-                       <h5>Nome: Pérola Negra</h5>
-                       <h5>Tamanho: 50</h5>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-danger" style="float: right; margin-top: 20px;"> Excluir</button>
-                    </div>
-               </div>
-            </div>
+            <?php 
+              require_once "backend/lista_embarcacao.php";
+            ?>
         </div>
 
         <!--===============
@@ -74,19 +66,19 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Cadastrar Embarcação</h4>
               </div>
-              <form>
+              <form action="backend/insere_embarcacao.php" method="post">
                 <div class="modal-body"> 
                   <div class="form-group">
                     <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" id="nome">
+                    <input type="text" class="form-control" id="nome" name="nome">
                   </div> 
                   <div class="form-group">
-                    <label for="tam">Tamanho:</label>
-                    <input type="number" class="form-control" id="tam">
+                    <label for="tam">Tamanho (m³):</label>
+                    <input type="number" class="form-control" id="tam" name="tam">
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button class="btn btn-success"> Cadastrar </button>
+                  <input class="btn btn-success" type="submit" value="Cadastrar">
                 </div>
               </form>
             </div>  

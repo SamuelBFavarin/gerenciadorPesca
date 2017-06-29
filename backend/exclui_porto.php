@@ -6,14 +6,14 @@
 	$id = $_POST['id'];
 	
 	//SQL PARA DELETAR DADOS
-	$sql = "DELETE FROM embarcacao WHERE (id = ".$id.")";
+	$sql = "DELETE FROM porto WHERE (id = ".$id.")";
 	
 	//ENVIAR QUERY AO BANCO: $conexao 
 	$query = pg_query($conexao,$sql);
 
 	//RETORNA A PÁGINA ANTERIOR
 	echo "<script>
-			location.href='../embarcacao.php';
+			location.href='../porto.php';
 		 </script>"; 
 
 	//MORRE	 

@@ -51,7 +51,7 @@
             <button class="btn btn-success col-md-6" type="button" data-toggle="modal" data-target="#portoModal" style="max-width: 200px; float: right;"> Adicionar Porto</button> 
             
             <?php 
-              require_once "backend/lista_embarcacao.php"
+              require_once "backend/lista_porto.php"
             ?>
         </div>
 
@@ -67,7 +67,7 @@
                 <h4 class="modal-title">Cadastrar Porto</h4>
               </div>
 
-              <form action="backend/insere_embarcacao.php" method="post">
+              <form action="backend/insere_porto.php" method="post">
                 <div class="modal-body"> 
                   <div class="form-group">
                     <label for="nome">Nome:</label>

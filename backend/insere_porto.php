@@ -4,18 +4,19 @@
 
 	//RECEBE OS DADOS VIA POST
 	$nome = $_POST['nome'];
-	$tam = $_POST['tam'];
+	$adm = $_POST['adm'];
+	$ano = intval($_POST['ano']);
 
 	
 	//QUERY PARA INSERIR DADOS
-	$query = "INSERT INTO embarcacao (nome,tamanho) VALUES('".$nome."',".$tam.");";
+	$query = "INSERT INTO porto (nome,administracao,ano) VALUES('".$nome."','".$adm."',".$ano.");";
 	
 	//ENVIAR QUERY AO BANCO: $conexao 
 	pg_query($conexao,$query);
 
 	//RETORNA A PÁGINA ANTERIOR
 	echo "<script>
-			location.href='../embarcacao.php';
+			location.href='../porto.php';
 		 </script>"; 
 
 	//MORRE	 
