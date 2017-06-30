@@ -61,25 +61,9 @@
             
             <button class="btn btn-success col-md-6" type="button" data-toggle="modal" data-target="#vagaModal" style="max-width: 180px; float: right;"> Adicionar Espécie</button> 
             
-            <div class="panel panel-default" style="margin-top: 60px;">
-               <div class="panel-body">
-                    <div class="col-md-6">
-                       <h5>Nome: Pérola Negra</h5>
-                       <h5>Profundidade máxima: 50</h5>
-                       <h5>Profundidade minima: 50</h5>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-danger" style="float: right;"> Excluir</button>
-                    </div>
-                    <div class="col-md-12">
-                      <img class="col-md-4 galeria" src="http://www.peixes.info/wp-content/uploads/2013/10/Peixe-Tainha-3-500x282.jpg"/>
-                      <img class="col-md-4 galeria" src="http://www.clubedapescaria.com.br/img/peixes/tainha.jpg"/>
-                      <img class="col-md-4 galeria" src="http://pescanapraia.com/wp-content/uploads/2013/04/tainha-1.jpg"/>
-                      <img class="col-md-4 galeria" src="http://www.pesqueirapioneira.com.br/wp-content/uploads/Tainha.png"/> 
-                      <img class="col-md-4 galeria" src="http://wp.peska.com.br/images/stories/tainha_gra.gif"/>         
-                    </div>
-               </div>
-            </div>
+                <?php 
+                  require_once "backend/lista_especie.php";
+                ?>
         </div>
 
         <!--===============

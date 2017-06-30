@@ -28,10 +28,10 @@
 	    if(in_array($ext,$extension))
 	    {
 	    	//FAZ O UPLOAD CASO NÃO TENHA NENHUM ARQUIVO COM MESMO NOME
-	        if(!file_exists("../assets/upload/".$file_name))
+	        if(!file_exists("../gerenciadorPesca/assets/upload/".$file_name))
 	        {
 	        	//DIRETÓRIO
-	        	$dir = "../assets/upload/".$file_name;
+	        	$dir = "../gerenciadorPesca/assets/upload/".$file_name;
 	            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],$dir);
 	        }
 	        //FAZ O UPLOAD CASO TENHA OUTRO ARQUIVO COM MESMO NOME
@@ -39,9 +39,9 @@
 	        else
 	        {
 	            $filename=basename($file_name,$ext);
-	            $newFileName=$filename.time().".".$ext;
+	            $newFileName=$filename.time().$ext;
 	            //DIRETÓRIO
-	            $dir = "../assets/upload/".$newFileName;
+	            $dir = "../gerenciadorPesca/assets/upload/".$newFileName;
 	            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],$dir);      
 	        }
 
@@ -59,7 +59,7 @@
 
 	//RETORNA A PÁGINA ANTERIOR
 	echo "<script>
-			location.href='../embarcacao.php';
+			location.href='../especie.php';
 		 </script>"; 
 
 ?>
