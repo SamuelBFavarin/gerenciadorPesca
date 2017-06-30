@@ -94,27 +94,27 @@
                 <h4 class="modal-title">Cadastrar Embarcação</h4>
               </div>
               
-              <form action="/action_page.php" method="post">
+              <form action="backend/insere_especie.php" method="post" enctype="multipart/form-data">
                 <div class="modal-body"> 
                   <div class="form-group">
                     <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" id="nome">
+                    <input type="text" class="form-control" id="nome" name="nome">
                   </div> 
                   <div class="form-group">
                     <label for="tam">Profundidade Máxima</label>
-                    <input type="number" class="form-control" id="tam">
+                    <input type="number" class="form-control" id="tam" name="prMax">
                   </div>
                   <div class="form-group">
                     <label for="tam">Profundidade Mínima</label>
-                    <input type="number" class="form-control" id="tam">
+                    <input type="number" class="form-control" id="tam" name="prMin">
                   </div>
 
-                  <input id="fileUpload" type="file" multiple />
+                  <input id="fileUpload" type="file" name="files[]" multiple/ />
                   <div id="image-holder"></div>
 
                 </div>
                 <div class="modal-footer">
-                  <button class="btn btn-success"> Cadastrar </button>
+                  <input type="submit" class="btn btn-success" value="Cadastrar"/>
                 </div>
               </form>
               
