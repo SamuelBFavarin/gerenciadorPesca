@@ -43,10 +43,7 @@
                     
                     for($j=0; $j<pg_num_rows($query_foto); $j++){
 						$arr2 = pg_fetch_array($query_foto, $j, PGSQL_ASSOC);				
-						$dir = $arr2["dir"];
-						
-
-
+						$dir = $arr2["dir"];						
 						echo '<img class="col-md-4 galeria" src="'.$dir.'"/>';
 					}
 
