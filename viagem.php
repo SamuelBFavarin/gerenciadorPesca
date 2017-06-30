@@ -1,5 +1,7 @@
 <?php 
-    require_once "backend/conexao.php";              
+    require_once "backend/conexao.php";      
+
+    $arrayLista = [];        
 ?>
 <html>
     <head>
