@@ -1,3 +1,6 @@
+<?php 
+    require_once "backend/conexao.php";              
+?>
 <html>
     <head>
         <title>Gerenciador Pesca</title>
@@ -47,6 +50,7 @@
             </ul>
           </div>
         </nav>
+
         <!--===================
             Formulário Viagem
         =====================-->
@@ -56,38 +60,47 @@
                 <div class="panel-body">
                     <div class="form-group">
                       <label for="embarcacao">Escolha uma embarcação:</label>
-                      <select class="form-control" id="embarcacao">
-                        <option>Pérola Negra</option>
-                        <option>Diamante de Sangue</option>
-                        <option>Bote </option>
-                        <option>Barquinho</option>
+                      <select class="form-control" id="embarcacao" name="inicial">
+                        <?php 
+                            $sql = "SELECT id , nome FROM embarcacao";
+                            $query = pg_query($conexao,$sql);
+                            for($i=0; $i<pg_num_rows($query); $i++){
+                                $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                                echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                            }?>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="portoInicial">Escolha o porto inicial:</label>
-                      <select class="form-control" id="portoInicial">
-                        <option>Itajaí</option>
-                        <option>Santos</option>
-                        <option>Garopaba </option>
-                        <option>Navegantes</option>
+                      <select class="form-control" id="portoInicial" name="portInicial">
+                        <?php 
+                            $sql = "SELECT id , nome FROM porto";
+                            $query = pg_query($conexao,$sql);
+                            for($i=0; $i<pg_num_rows($query); $i++){
+                                $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                                echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                            }?>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="portoFinal">Escolha o porto final:</label>
-                      <select class="form-control" id="portoFinal">
-                        <option>Itajaí</option>
-                        <option>Santos</option>
-                        <option>Garopaba </option>
-                        <option>Navegantes</option>
+                      <select class="form-control" id="portoFinal" name="portFinal">
+                        <?php 
+                            $sql = "SELECT id , nome FROM porto";
+                            $query = pg_query($conexao,$sql);
+                            for($i=0; $i<pg_num_rows($query); $i++){
+                                $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                                echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                            }?>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="dataInicio">Defina a data inicial:</label>
-                      <input type="date" class="form-control" id="dataInicio">
+                      <input type="date" class="form-control" id="dataInicio" name="dataInicio">
                     </div>
                     <div class="form-group">
                       <label for="dataFim">Defina a data inicial:</label>
-                      <input type="date" class="form-control" id="dataFim">
+                      <input type="date" class="form-control" id="dataFim" name="dataFim">
                     </div>
                 </div>
             </div>
