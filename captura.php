@@ -4,15 +4,20 @@
                 <h3>Captura</h3>
                 <div class="form-group col-md-6">
                   <label for="pesp">Peso:</label>
-                  <input type="number" class="form-control" id="peso">
+                  <input type="number" class="form-control" id="peso" name="pesp">
                 </div>
                  <div class="form-group col-md-6">
                   <label for="portoFinal">Espécie:</label>
-                  <select class="form-control" id="portoFinal">
-                    <option>Tainha</option>
-                    <option>Salmão</option>
-                    <option>Sardinha </option>
-                    <option>Camarão</option>
+                  <select class="form-control" id="portoFinal" name="id_especie">
+                     <?php 
+                          require_once "backend/conexao.php";
+                          $sql = "SELECT id , nome FROM especie";
+                          $query = pg_query($conexao,$sql);
+                          for($i=0; $i<pg_num_rows($query); $i++){
+                              $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                              echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                          }
+                      ?>
                   </select>
                 </div>
             </div>

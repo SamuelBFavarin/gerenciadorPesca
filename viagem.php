@@ -1,7 +1,6 @@
 <?php 
-    require_once "backend/conexao.php";      
+    require_once "backend/conexao.php"; 
 
-    $arrayLista = [];        
 ?>
 <html>
     <head>
@@ -46,9 +45,6 @@
                       <li><a href="#">Resumo de atividade por espécie</a></li>
                     </ul>
                 </li>
-                <li style="float: right;">
-                   <button class="btn btn-success" > Finalizar Cadastro</button>
-                </li> 
             </ul>
           </div>
         </nav>
@@ -58,65 +54,76 @@
         =====================-->
         <div class="container">
             <h3>Nova Viagem</h3>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="form-group">
-                      <label for="embarcacao">Escolha uma embarcação:</label>
-                      <select class="form-control" id="embarcacao" name="inicial">
-                        <?php 
-                            $sql = "SELECT id , nome FROM embarcacao";
-                            $query = pg_query($conexao,$sql);
-                            for($i=0; $i<pg_num_rows($query); $i++){
-                                $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
-                                echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
-                            }?>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="portoInicial">Escolha o porto inicial:</label>
-                      <select class="form-control" id="portoInicial" name="portInicial">
-                        <?php 
-                            $sql = "SELECT id , nome FROM porto";
-                            $query = pg_query($conexao,$sql);
-                            for($i=0; $i<pg_num_rows($query); $i++){
-                                $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
-                                echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
-                            }?>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="portoFinal">Escolha o porto final:</label>
-                      <select class="form-control" id="portoFinal" name="portFinal">
-                        <?php 
-                            $sql = "SELECT id , nome FROM porto";
-                            $query = pg_query($conexao,$sql);
-                            for($i=0; $i<pg_num_rows($query); $i++){
-                                $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
-                                echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
-                            }?>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="dataInicio">Defina a data inicial:</label>
-                      <input type="date" class="form-control" id="dataInicio" name="dataInicio">
-                    </div>
-                    <div class="form-group">
-                      <label for="dataFim">Defina a data inicial:</label>
-                      <input type="date" class="form-control" id="dataFim" name="dataFim">
+            <form action="enviar.php" method="post">
+                <li style="float: right; list-style-type: none; ">
+                   <button class="btn btn-success" > Finalizar Cadastro</button>
+                </li> 
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                          <label for="embarcacao">Escolha uma embarcação:</label>
+                          <select class="form-control" id="embarcacao" name="inicial">
+                            <?php 
+                                $sql = "SELECT id , nome FROM embarcacao";
+                                $query = pg_query($conexao,$sql);
+                                for($i=0; $i<pg_num_rows($query); $i++){
+                                    $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                                    echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                                }?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="portoInicial">Escolha o porto inicial:</label>
+                          <select class="form-control" id="portoInicial" name="portInicial">
+                            <?php 
+                                $sql = "SELECT id , nome FROM porto";
+                                $query = pg_query($conexao,$sql);
+                                for($i=0; $i<pg_num_rows($query); $i++){
+                                    $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                                    echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                                }?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="portoFinal">Escolha o porto final:</label>
+                          <select class="form-control" id="portoFinal" name="portFinal">
+                            <?php 
+                                $sql = "SELECT id , nome FROM porto";
+                                $query = pg_query($conexao,$sql);
+                                for($i=0; $i<pg_num_rows($query); $i++){
+                                    $arr = pg_fetch_array($query, $i, PGSQL_ASSOC); 
+                                    echo'<option value="'.$arr["id"].'">'.$arr["nome"].'</option>';
+                                }?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="dataInicio">Defina a data inicial:</label>
+                          <input type="date" class="form-control" id="dataInicio" name="dataInicio">
+                        </div>
+                        <div class="form-group">
+                          <label for="dataFim">Defina a data inicial:</label>
+                          <input type="date" class="form-control" id="dataFim" name="dataFim">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <ul class="nav nav-tabs" id="lances_adicionados" style="cursor:pointer;">
-                    <li> <a data-toggle="tab" style="color: white; background-color: green;" id="addLance"onclick="addLance()"> + Adicionar Lance </a></li>
-                    <li class="active"><a data-toggle="tab" href="#lance1">Lance 1</a></li>
-                </ul>
-                <div class="tab-content" id="pagLances"> </div>
-            </div>
+                <div class="container">
+                    <ul class="nav nav-tabs" id="lances_adicionados" style="cursor:pointer;">
+                        <li> <a data-toggle="tab" style="color: white; background-color: green;" id="addLance"onclick="addLance()"> + Adicionar Lance </a></li>
+                        <li class="active"><a data-toggle="tab" href="#lance1">Lance 1</a></li>
+                    </ul>
+                    <div class="tab-content" id="pagLances"> </div>
+                </div>
+            </form>
 
 
         <script>
             var cont = 0;
+
+            function varrerValores(){
+                $("#exemplo1 > div").each( function(index, value) {
+                    console.log( 'div: ' + $(this).attr('id') );
+                });
+            }
 
             function addLance(){
                 // FUNÇÃO PARA ADICIONAR NOVOS LANCES 
@@ -156,9 +163,9 @@
                     lance.append(
                         "<div>"+
                          "<center>"+
-                            "<button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ cont+ ");'>"+
+                            "<label  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ cont+ ");'>"+
                                 "+ Captura"+
-                            "</button>"+
+                            "</label>"+
                          "</center>"+
                         "</div>"
                     );
@@ -169,6 +176,7 @@
 
             window.onload = function addLanceOnLoad(){
                 // FUNÇÃO ADD LANCE 1 AO CARREGAR A PÁGINA
+
 
                 //RECEBE POR GET O ARQUIVO lance.php
                 $.get("./lance.php",  function (lancePHP){
@@ -195,9 +203,9 @@
                     lance.append(
                         "<div>"+
                             "<center>"+
-                                "<button  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ cont+ ");'>"+
+                                "<label  value='"+cont+"'' id='"+cont+"' class='btn btn-default mainButton' onclick='addCaptura("+ cont+ ");'>"+
                                     "+ Captura"+
-                                "</button>"+
+                                "</label>"+
                             "</center>"+
                         "</div>"
                     );
