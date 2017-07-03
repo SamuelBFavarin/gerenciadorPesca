@@ -75,7 +75,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Cadastrar Embarcação</h4>
+                <h4 class="modal-title">Cadastrar Espécie</h4>
               </div>
               
               <form action="backend/insere_especie.php" method="post" enctype="multipart/form-data">
@@ -110,7 +110,6 @@
         <script type="text/javascript">
          $("#fileUpload").on('change', function () {
 
-               //Get count of selected files
                var countFiles = $(this)[0].files.length;
 
                var imgPath = $(this)[0].value;
@@ -118,6 +117,7 @@
                var image_holder = $("#image-holder");
                image_holder.empty();
 
+               //VALIDAÇÃO FORMATO
                if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
                    if (typeof (FileReader) != "undefined") {
 
@@ -137,10 +137,10 @@
                        }
 
                    } else {
-                       alert("This browser does not support FileReader.");
+                       alert("ESSE BROWSER NÃO SUPORTA FILE READER");
                    }
                } else {
-                   alert("Pls select only images");
+                   alert("Por favor, selecione um imagem");
                }
            });
         </script>

@@ -33,7 +33,7 @@
                <div class="panel-body">
                     <div class="col-md-6">
                        <h5>Nome:'.$nome.'</h5>
-                       <h5>Profundidade máxima:'.$max.' metros/h5>
+                       <h5>Profundidade máxima:'.$max.' metros </h5>
                        <h5>Profundidade minima: '.$min.' metros</h5>
                     </div>
                     <div class="col-md-6">

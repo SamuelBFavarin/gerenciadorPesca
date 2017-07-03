@@ -5,12 +5,20 @@
 	$nome = $_POST['nome'];
 	$prMax = $_POST['prMax'];
 	$prMin = $_POST['prMin'];
-	
-	//QUERY PARA INSERIR DADOS PARA especie 
-	//Obs.: Restorna id para ser utilizado depois
-	$SQL_ESPECIE = "INSERT INTO especie (nome, profundidade_max, profundidade_min) VALUES ('".$nome."',".$prMax.",".$prMin.") RETURNING id";
-	$query = pg_query($conexao,$SQL_ESPECIE);
 
+	//VALIDAÇÃO INPUT VAZIO NUMÉRIOCO
+	if(empty($nome) or empty($prMax) or empty($prMin) or (!is_numeric($prMax)) or (!is_numeric($prMin)) or ($prMax < 0) or ($prMin < 0) or ($prMin > $prMax)){
+		echo '<script>		
+				location.href="../especie.php";		
+		 		alert("Preenchimento indevido de fomulário :(");
+		 	</script>';
+		die();
+	}
+
+
+	$SQL_ESPECIE = "INSERT INTO especie (nome, profundidade_max, profundidade_min) VALUES ('".$nome."',".$prMax.",".$prMin.") RETURNING id";
+	
+	$query = pg_query($conexao,$SQL_ESPECIE);
 	//PEGANDO VALOR DO ID DA ÚLTIMA LINHA
 	$row = pg_fetch_row($query);
 	$id =  $row[0];
@@ -28,10 +36,10 @@
 	    if(in_array($ext,$extension))
 	    {
 	    	//FAZ O UPLOAD CASO NÃO TENHA NENHUM ARQUIVO COM MESMO NOME
-	        if(!file_exists("../gerenciadorPesca/assets/upload/".$file_name))
+	        if(!file_exists("localhost/gerenciadorPesca/assets/upload/".$file_name))
 	        {
 	        	//DIRETÓRIO
-	        	$dir = "../gerenciadorPesca/assets/upload/".$file_name;
+	        	$dir = "localhost/gerenciadorPesca/assets/upload/".$file_name;
 	            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],$dir);
 	        }
 	        //FAZ O UPLOAD CASO TENHA OUTRO ARQUIVO COM MESMO NOME
@@ -41,7 +49,7 @@
 	            $filename=basename($file_name,$ext);
 	            $newFileName=$filename.time().$ext;
 	            //DIRETÓRIO
-	            $dir = "../gerenciadorPesca/assets/upload/".$newFileName;
+	            $dir = "localhost/gerenciadorPesca/assets/upload/".$newFileName;
 	            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key],$dir);      
 	        }
 
@@ -51,10 +59,23 @@
 	    }
 	    else
 	    {
-	    	//CASO ACONTEÇA ALGUM ERRO
+	    	//VALIDAÇÃO FORMATO NO PHP
 	        array_push($error,"$file_name, ");
+	        $SQL_ERROR_FOTO = "DELETE FROM especie WHERE (id = ".$id.")";
+	        pg_query($conexao,$SQL_ERROR_FOTO);
+	        echo 
+				'<script>					
+					alert("Erro no envio da foto");
+					location.href="../especie.php";	
+			 	</script>'
+			;
+			die();
 	    }
     }
+
+    //QUERY PARA INSERIR DADOS PARA especie 
+	//Obs.: Restorna id para ser utilizado depois
+
 
 
 	//RETORNA A PÁGINA ANTERIOR
