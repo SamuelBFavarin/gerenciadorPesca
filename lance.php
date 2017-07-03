@@ -1,7 +1,7 @@
 <?php 
   $id = $_GET["id"];
   echo '
-    <div class="panel panel-default">
+    <div class="panel panel-default" id="id">
         <div class="panel-body">
             <div class="form-group col-md-4">
               <label for="horaInicio">Defina a hora inicial:</label>
@@ -44,6 +44,8 @@
 <script>
 
     var id_cap = 0;
+    var id_lance = $("#id").val();
+    alert(id_lance);
     function addCaptura(val){
         //FUNÇÃO QUE ADICIONA CAPTURA NO LANCE ESPECÍFICO
         //RECEBE O ID DO LANCE
