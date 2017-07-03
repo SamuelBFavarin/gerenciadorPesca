@@ -54,9 +54,9 @@
         =====================-->
         <div class="container">
             <h3>Nova Viagem</h3>
-            <form action="enviar.php" method="post">
+            <form  method="post">
                 <li style="float: right; list-style-type: none; ">
-                   <button class="btn btn-success" > Finalizar Cadastro</button>
+                   <button class="btn btn-success" onclick="varrerValores()"> Finalizar Cadastro</button>
                 </li> 
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -120,16 +120,40 @@
             var cont = 0;
 
             function varrerValores(){
-                $("#exemplo1 > div").each( function(index, value) {
-                    console.log( 'div: ' + $(this).attr('id') );
+               var inputs = new Array();
+               var selects = new Array();
+
+                $('form input').each(function() {
+                        //alert("name: "+ $(this).attr('name') +" valor: "+$(this).val());
+                        inputs.push($(this).val());
                 });
+
+                 $('form select').each(function() {
+                       // alert("name:"+ $(this).attr('name') +" valor: "+$(this).val());
+                        selects.push($(this).val());
+                });
+
+                 var inputsJson = JSON.stringify(inputs);
+                 var selectsJson = JSON.stringify(selects);
+
+                 $.ajax({
+                  url: 'http://localhost/gerenciadorPesca/backend/insere_viagem.php',
+                  type: 'POST', // Tipo de requisição, podendo alterar para GET, POST, PUT , DELETE e outros metodos http
+                  data: {inputsJson: inputsJson, selectsJson: selectsJson, cont: cont},
+                  success: function(resposta){
+                     alert("ENVIADO");
+                  },
+                  error: function(resposta){
+                    alert("ERROR");
+                  }
+                })
             }
 
             function addLance(){
                 // FUNÇÃO PARA ADICIONAR NOVOS LANCES 
 
                 //RECEBE POR GET O ARQUIVO lance.php 
-                $.get("./lance.php", function (lancePHP){
+                $.get("./lance.php", {"id":cont} , function (lancePHP){
 
                     //ADICIONA ABA DA LISTA
                     $("#lances_adicionados").append(
@@ -179,7 +203,7 @@
 
 
                 //RECEBE POR GET O ARQUIVO lance.php
-                $.get("./lance.php",  function (lancePHP){
+                $.get("./lance.php", {"id":cont}  ,  function (lancePHP){
 
                     //CRIA TÍTULO PARA O LANCE 1
                     $("#pagLances").append(
@@ -214,17 +238,6 @@
             }
 
             
-            function addCaptura(val){
-                //FUNÇÃO QUE ADICIONA CAPTURA NO LANCE ESPECÍFICO
-                //RECEBE O ID DO LANCE
-
-                //RECEBE POR GET O ARQUIVO captura.php
-                $.get("./captura.php", function (lance){
-
-                    //ADD CAPTURA NA DIVISÃO DEFINIDA POR LANCE
-                   $("#captura"+val).append(lance);
-                });  
-            }
         </script>
         
     </body>  
