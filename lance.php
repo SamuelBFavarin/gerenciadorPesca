@@ -45,13 +45,13 @@
 
     var id_cap = 0;
     var id_lance = $("#id").val();
-    alert(id_lance);
+    
     function addCaptura(val){
         //FUNÇÃO QUE ADICIONA CAPTURA NO LANCE ESPECÍFICO
         //RECEBE O ID DO LANCE
 
         //RECEBE POR GET O ARQUIVO captura.php
-        $.get("./captura.php", {"id":id_cap} , function (lance){
+        $.get("./captura.php", {"id":id_cap , "id_lance" : id_lance} , function (lance){
 
             //ADD CAPTURA NA DIVISÃO DEFINIDA POR LANCE
            $("#captura"+val).append(lance);

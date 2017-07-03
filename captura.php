@@ -1,6 +1,6 @@
 <?php
   $id = $_GET["id"];
-  $id_cap = 0;
+  $id_lance = $_GET["id_lance"];
 
   echo'
         <div class="panel panel-default">
@@ -8,11 +8,11 @@
                 <h3>Captura</h3>
                 <div class="form-group col-md-6">
                   <label for="pesp">Peso:</label>
-                  <input type="number" class="form-control" id="peso" name="pesp'.$id.'">
+                  <input type="number" class="form-control" id="peso" name="'.$id_lance.'_pesp'.$id.'">
                 </div>
                  <div class="form-group col-md-6">
                   <label for="portoFinal">Espécie:</label>
-                  <select class="form-control" id="portoFinal" name="id_especie'.$id.'">
+                  <select class="form-control" id="portoFinal" name="'.$id_lance.'_id_especie'.$id.'">
   ';                   
                           require_once "backend/conexao.php";
                           $sql = "SELECT id , nome FROM especie";

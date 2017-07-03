@@ -56,7 +56,7 @@
             <h3>Nova Viagem</h3>
             <form  method="post">
                 <li style="float: right; list-style-type: none; ">
-                   <button class="btn btn-success" onclick="varrerValores()"> Finalizar Cadastro</button>
+                   <a href="backend/insere_viagem.php"> <button class="btn btn-success" onclick="varrerValores()"> Finalizar Cadastro</button></a>
                 </li> 
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -124,19 +124,17 @@
                var selects = new Array();
 
                 $('form input').each(function() {
-                        //alert("name: "+ $(this).attr('name') +" valor: "+$(this).val());
-                        inputs.push($(this).val());
+                        inputs.push("name: "+ $(this).attr('name') +" valor: "+$(this).val());
                 });
 
                  $('form select').each(function() {
-                       // alert("name:"+ $(this).attr('name') +" valor: "+$(this).val());
-                        selects.push($(this).val());
+                        selects.push("name:"+ $(this).attr('name') +" valor: "+$(this).val());
                 });
 
                  var inputsJson = JSON.stringify(inputs);
                  var selectsJson = JSON.stringify(selects);
 
-                 $.ajax({
+                 /*$.ajax({
                   url: 'http://localhost/gerenciadorPesca/backend/insere_viagem.php',
                   type: 'POST', // Tipo de requisição, podendo alterar para GET, POST, PUT , DELETE e outros metodos http
                   data: {inputsJson: inputsJson, selectsJson: selectsJson, cont: cont},
@@ -146,7 +144,7 @@
                   error: function(resposta){
                     alert("ERROR");
                   }
-                })
+                })*/
             }
 
             function addLance(){
@@ -237,7 +235,7 @@
                 cont++;
             }
 
-            
+
         </script>
         
     </body>  
