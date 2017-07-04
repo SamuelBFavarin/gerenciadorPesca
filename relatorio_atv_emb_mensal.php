@@ -44,9 +44,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" >Relatórios
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Resumo de atividade mensal</a></li>
-                      <li><a href="#">Resumo de atividade mensal por embarcação</a></li>
-                      <li><a href="#">Resumo de atividade por espécie</a></li>
+                      <li><a href="relatorio_atv_mensal.php">Resumo de atividade mensal</a></li>
+                      <li><a href="relatorio_atv_emb_mensal.php">Resumo de atividade mensal por embarcação</a></li>
+                      <li><a href="relatorio_atv_especie.php">Resumo de atividade por espécie</a></li>
                     </ul>
                 </li>
             </ul>

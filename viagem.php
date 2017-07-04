@@ -134,7 +134,7 @@
                  var inputsJson = JSON.stringify(inputs);
                  var selectsJson = JSON.stringify(selects);
 
-                 /*$.ajax({
+                 $.ajax({
                   url: 'http://localhost/gerenciadorPesca/backend/insere_viagem.php',
                   type: 'POST', // Tipo de requisição, podendo alterar para GET, POST, PUT , DELETE e outros metodos http
                   data: {inputsJson: inputsJson, selectsJson: selectsJson, cont: cont},
@@ -144,7 +144,7 @@
                   error: function(resposta){
                     alert("ERROR");
                   }
-                })*/
+                })
             }
 
             function addLance(){

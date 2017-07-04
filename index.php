@@ -43,11 +43,11 @@
                 </li>
             </ul>
           </div>
-        </nav>
+        </nav> 
         
         <!--===============
             Content Home
-        ===================-->
+        ===================
         <div class="container">
             <div class="col-md-4 mainButton">
                 <h3>Nova viagem</h3>
@@ -65,6 +65,6 @@
                 <button class="btn btn-alert"> Atividade mensal por embarcação</button><br>
                 <button class="btn btn-alert"> Atividade por espécie</button>
             </div>
-        </div>   
+        </div> -->  
     </body>  
 </html>

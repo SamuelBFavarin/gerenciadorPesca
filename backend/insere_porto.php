@@ -25,12 +25,8 @@
   	die('failure');
 	}*/
 	//QUERY PARA INSERIR DADOS
-	/*$query = "INSERT INTO porto (nome,administracao,ano) VALUES(?, ?, ?);";
-	//TRANDO SQL INJECTION
-	$result = pg_query_params($conexao, $squery, array($nome, $adm, $ano));
-		if (pg_num_rows($result) < 1) {
-  	die('failure');
-	}
+	$query = "INSERT INTO porto (nome,administracao,ano) VALUES('".$nome."', '".$adm."', ".$ano.");";
+
 	
 	//ENVIAR QUERY AO BANCO: $conexao 
 	pg_query($conexao,$query);
@@ -41,9 +37,9 @@
 		 </script>"; 
 
 	//MORRE	 
-	die();*/
+	die();
 
-
+/*
 	$stmt = $conexao->prepare("INSERT INTO porto (nome,administracao,ano) VALUES(?, ?, ?);");
 	$rs = pg_query_params($conn, $sql, $a_bind_params);
 	if($rs === false) {
@@ -61,4 +57,4 @@
 	}
 	
 
-	$conexao->close();
+	$conexao->close();*/
