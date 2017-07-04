@@ -36,9 +36,9 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" >Relatórios
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Resumo de atividade mensal</a></li>
-                      <li><a href="#">Resumo de atividade mensal por embarcação</a></li>
-                      <li><a href="#">Resumo de atividade por espécie</a></li>
+                      <li><a href="relatorio_atv_mensal.php">Resumo de atividade mensal</a></li>
+                      <li><a href="relatorio_atv_emb_mensal.php">Resumo de atividade mensal por embarcação</a></li>
+                      <li><a href="relatorio_atv_especie.php">Resumo de atividade por espécie</a></li>
                     </ul>
                 </li>
             </ul>
@@ -56,7 +56,7 @@
             <div class="col-md-4 mainButton">
                 <h3>Gerenciar</h3>
                 <a href="embarcacao.php"><button class="btn btn-primary"> Embarcação</button></a><br>
-                <button class="btn btn-primary"> Espécies</button><br>
+                <a href=""><button class="btn btn-primary"> Espécies</button><br></a>
                 <button class="btn btn-primary"> Porto</button>
             </div>
             <div class="col-md-4 mainButton">
